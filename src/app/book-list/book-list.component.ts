@@ -41,7 +41,7 @@ export class BookListComponent implements OnInit {
         1
       )];
   }
-
+  
   rateUp(book: Book) : void {
     if(book.rating < 5)
       book.rating++;
@@ -51,5 +51,4 @@ export class BookListComponent implements OnInit {
     if(book.rating > 1)
       book.rating--;
   }
-
 }

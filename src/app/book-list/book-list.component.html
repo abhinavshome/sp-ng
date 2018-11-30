@@ -1,12 +1,10 @@
 <div 
   *ngFor="let book of books" 
-  [class.high]="book.rating>3"  
 >
-    <div class="title">{{ book.title }}</div>
-    <div class="author">{{book.author}}</div>
-    <div>{{book.price}}</div>
-    <div>{{book.rating}}</div>
-    <button (click)="rateUp(book)">&uarr;</button>
-    <button (click)="rateDown(book)">&darr;</button>
-    <hr />
+  <book-item 
+    [book]="book"
+    (onRateUp)="rateUp(book)"
+    (onRateDown)="rateDown(book)"
+  >
+  </book-item>
 </div>

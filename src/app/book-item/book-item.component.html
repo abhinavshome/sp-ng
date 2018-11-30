@@ -1,0 +1,9 @@
+<div [class.high]="book.rating > 3">
+  <div class="title">{{ book.title }}</div>
+  <div class="author">{{book.author}}</div>
+  <div>{{book.price}}</div>
+  <div>{{book.rating}}</div>
+  <button (click)="onRateUpBtnClick(book)">&uarr;</button>
+  <button (click)="onRateDownBtnClick(book)">&darr;</button>
+  <hr />
+</div>
