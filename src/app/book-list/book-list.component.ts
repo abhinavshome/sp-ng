@@ -1,3 +1,4 @@
+import { Cart, Item } from './../models/cart';
 import { Book } from './../models/book';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookListComponent implements OnInit {
   books: Book[];
+  cart: Cart;
 
   constructor() {
 
@@ -40,6 +42,10 @@ export class BookListComponent implements OnInit {
         24,
         1
       )];
+
+      this.cart = new Cart();
+      this.cart.items = [];
+      this.cart.totalPrice = 0;
   }
   
   rateUp(book: Book) : void {
@@ -50,5 +56,18 @@ export class BookListComponent implements OnInit {
   rateDown(book: Book) : void {
     if(book.rating > 1)
       book.rating--;
+  }
+
+  addToCart(item: Item) : void {
+    let i : Item;
+    i = this.cart.items.find( function (e) {
+      return e.name == item.name;
+    });
+    if(i) {
+      i.qty++;
+    } else {
+      this.cart.items.push(item);
+    }
+    this.cart.totalPrice += item.price;
   }
 }

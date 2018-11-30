@@ -1,3 +1,4 @@
+<cart [cart]="cart"></cart>
 <div 
   *ngFor="let book of books" 
 >
@@ -5,6 +6,7 @@
     [book]="book"
     (onRateUp)="rateUp(book)"
     (onRateDown)="rateDown(book)"
+    (onAddToCart)="addToCart($event)"
   >
   </book-item>
 </div>
