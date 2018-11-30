@@ -58,7 +58,8 @@ export class BookListComponent implements OnInit {
       book.rating--;
   }
 
-  addToCart(item: Item) : void {
+  addToCart(book: Book) : void {
+    let item : Item = new Item(book.title, book.price, 1);
     let i : Item;
     i = this.cart.items.find( function (e) {
       return e.name == item.name;

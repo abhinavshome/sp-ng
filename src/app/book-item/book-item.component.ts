@@ -27,7 +27,6 @@ export class BookItemComponent implements OnInit {
   }
 
   onAddToCartBtnClick() {
-    let item : Item = new Item(this.book.title, this.book.price, 1);
-    this.onAddToCart.emit(item);
+    this.onAddToCart.emit();
   }
 }
