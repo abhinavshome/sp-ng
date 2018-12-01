@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Http } from '@angular/http';
 import { CartService } from './../../services/cart.service';
 import { BookService } from './../../services/book.service';
@@ -12,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-  books: Book[];
+  books$: Observable<Book[]>;
   cart: Cart;
 
   constructor(
@@ -24,15 +25,7 @@ export class BookListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bookService
-      .getBooks()
-      .subscribe(
-      res => this.books = res.json(),
-      err => console.log(err)
-      );
-    //console.log('Hello');
-
-    //this.books = this.bookService.getBooks();
+    this.books$ = this.bookService.getBooks();
     this.cart = this.cartService.getCart();
   }
 

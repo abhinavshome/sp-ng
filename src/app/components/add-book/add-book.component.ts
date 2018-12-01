@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { BookService } from './../../services/book.service';
 import { Book } from './../../models/book';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
@@ -7,9 +9,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
-  @Output() saveBtnClick = new EventEmitter();
   newBook: Book;
-  constructor() { }
+  constructor(private bookService: BookService, private router: Router) { }
 
   ngOnInit() {
     this.newBook = new Book(null, null, null, 1);
@@ -19,8 +20,13 @@ export class AddBookComponent implements OnInit {
     //let book = Object.assign({}, this.newBook);
     this.newBook.price = +this.newBook.price;
     this.newBook.rating = +this.newBook.rating;
-    this.saveBtnClick.emit(this.newBook);
-    this.newBook = new Book(null, null, null, null);
+    this.bookService
+      .addBook(this.newBook)
+      .subscribe(res => {
+        this.router.navigate(['/home']);
+        this.newBook = new Book(null, null, null, null);
+      });
+    
   }
 
   // handleSaveBtnClick(

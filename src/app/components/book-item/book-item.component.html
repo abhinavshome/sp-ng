@@ -1,5 +1,5 @@
 <div [class.high]="book.rating > 3">
-  <div class="title">{{ book.title | titlecase }}</div>
+  <a class="title" routerLink="/book-details/{{book.id}}">{{ book.title | titlecase }}</a>
   <div class="author">{{book.author}}</div>
   <div>{{book.price | currency:'INR' }}</div>
   <div>{{book.rating | number}}</div>

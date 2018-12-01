@@ -1,45 +1,35 @@
 import { Http } from '@angular/http';
 import { Book } from './../models/book';
 import { Injectable } from '@angular/core';
+import { pipe, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  private books: Book[];
   private url = 'http://localhost:3000/books';
 
   constructor(private http: Http) {
-    this.books = [
-      new Book(
-        'The Alchemist',
-        'Paulo Cohelo',
-        22,
-        3
-      ),
-      new Book(
-        '4 hour work week',
-        'Tim Ferris',
-        32,
-        5
-      ),
-      new Book(
-        '5 point someone',
-        'Chetan Bhagar',
-        11,
-        2
-      ),
-      new Book(
-        'One night at call center',
-        'Chetan Bhagat',
-        24,
-        1
-      )];
   }
 
-  getBooks() {
-    return this.http.get(this.url);
+  getBooks() : Observable<Book[]>{
+    return this.http
+      .get<Book[]>(this.url)
+      .pipe(
+        map(res => res.json())
+      )
+      ;
+  }
+
+  getBook(id: number) {
+    return this.http
+      .get(this.url + '/' + id)
+      .pipe(
+        map(res => res.json())
+      )
+      ;
   }
 
   rateUp(book: Book) {

@@ -1,7 +1,5 @@
-<add-book (saveBtnClick)="addBook($event)"></add-book>
-<cart [cart]="cart"></cart>
 <div 
-  *ngFor="let book of books" 
+  *ngFor="let book of (books$ | async)" 
 >
   <book-item 
     [book]="book"
