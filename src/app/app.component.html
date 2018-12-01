@@ -1,5 +1,9 @@
 <h2>BooksCart</h2>
 
-<book-list></book-list>
+<button (click)="showBookList = !showBookList">
+    click
+</button>
+
+<book-list *ngIf="showBookList"></book-list>
 
 <!-- <router-outlet></router-outlet> -->

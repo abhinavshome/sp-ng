@@ -1,5 +1,5 @@
-import { Item } from './../models/cart';
-import { Book } from './../models/book';
+import { Item } from './../../models/cart';
+import { Book } from './../../models/book';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -13,7 +13,9 @@ export class BookItemComponent implements OnInit {
   @Output() onRateDown = new EventEmitter();
   @Output() onAddToCart = new EventEmitter();
 
-  constructor() { }
+  constructor() { 
+    console.log('book item created');
+  }
 
   ngOnInit() {
   }
