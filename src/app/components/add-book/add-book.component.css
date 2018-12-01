@@ -1,0 +1,17 @@
+div{
+    margin: 5px;
+}
+label{
+    display: inline-block;
+    width: 70px;
+}
+.error{
+    color: red;
+}
+input.ng-invalid.ng-touched, input.ng-invalid.ng-dirty {
+    border: 1px solid red;
+}
+
+input.ng-valid.ng-touched, input.ng-valid.ng-dirty {
+    border: 1px solid green;
+}

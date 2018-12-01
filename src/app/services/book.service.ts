@@ -49,4 +49,8 @@ export class BookService {
     if (book.rating > 1)
       book.rating--;
   }
+
+  addBook(book: Book) {
+    this.books.unshift(book);
+  }
 }

@@ -1,0 +1,83 @@
+<form #addBookForm="ngForm" (ngSubmit)="handleSaveBtnClick();addBookForm.reset()">
+  <div>
+    <label>Title</label>
+    <input 
+      name="title" 
+      type="text" 
+      [(ngModel)]="newBook.title"
+      #title="ngModel"
+      required
+      minlength="4"
+     />
+  </div>
+  <div *ngIf="title.invalid && (title.touched || title.dirty)">
+    <div *ngIf="title.errors.required" class="error">
+      Title is required
+    </div>
+    <div *ngIf="title.errors.minlength" class="error">
+      Minimum 4 chars
+    </div>
+  </div>
+  <div>
+    <label>Author</label>
+    <input 
+      name="author" 
+      type="text" 
+      [(ngModel)]="newBook.author" 
+      #author="ngModel"
+      required
+    />
+  </div>
+  <div *ngIf="author.invalid && (author.touched || author.dirty)">
+      <div *ngIf="author.errors.required" class="error">
+        Title is required
+      </div>
+  </div>
+  <div>
+    <label>Price</label>
+    <input name="price" type="text" [(ngModel)]="newBook.price" />
+  </div>
+  <div>
+    <label>Rating</label>
+    <select name="rating" [(ngModel)]="newBook.rating">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <button type="submit" [disabled]="addBookForm.invalid">Save</button>
+  <button (click)="addBookForm.reset()">Reset</button>
+</form>
+{{newBook | json}}
+{{addBookForm.valid }}
+Title valid: {{ title.valid }}
+Title errors: {{ title.errors | json}}
+
+
+
+
+<!-- <div>
+  <label>Title</label>
+  <input type="text" #title />
+</div>
+<div>
+  <label>Author</label>
+  <input type="text" #author />
+</div>
+<div>
+  <label>Price</label>
+  <input type="text" #price />
+</div>
+<div>
+  <label>Rating</label>
+  <select #rating>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
+<button (click)="handleSaveBtnClick(title, author, price, rating)">Save</button> -->

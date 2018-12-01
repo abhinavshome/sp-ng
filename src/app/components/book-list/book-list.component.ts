@@ -37,4 +37,8 @@ export class BookListComponent implements OnInit {
   addToCart(book: Book): void {
     this.cartService.addToCart(book);
   }
+
+  addBook(book: Book) : void {
+    this.bookService.addBook(book);
+  }
 }
