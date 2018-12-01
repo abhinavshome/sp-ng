@@ -38,7 +38,7 @@ export class BookService {
       )];
   }
 
-  getBooks(): Book[] {
+  getBooks() {
     return this.http.get(this.url);
   }
 
