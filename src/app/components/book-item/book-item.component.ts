@@ -12,6 +12,7 @@ export class BookItemComponent implements OnInit {
   @Output() onRateUp = new EventEmitter();
   @Output() onRateDown = new EventEmitter();
   @Output() onAddToCart = new EventEmitter();
+  today = new Date();
 
   constructor() { 
     console.log('book item created');

@@ -1,8 +1,8 @@
 <div [class.high]="book.rating > 3">
-  <div class="title">{{ book.title }}</div>
+  <div class="title">{{ book.title | titlecase }}</div>
   <div class="author">{{book.author}}</div>
-  <div>{{book.price}}</div>
-  <div>{{book.rating}}</div>
+  <div>{{book.price | currency:'INR' }}</div>
+  <div>{{book.rating | number}}</div>
   <button (click)="onRateUpBtnClick()">&uarr;</button>
   <button (click)="onRateDownBtnClick()">&darr;</button>
   <button (click)="onAddToCartBtnClick()">+</button>
